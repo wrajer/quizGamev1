@@ -35,10 +35,9 @@ public class TestControllers {
         Test test = testRepository.findById(id).get(); //wyjęcie z bazy danych obiektu pytania
         modelMap.addAttribute("test", test);
         modelMap.addAttribute("question", test.getQuestionList().get(questionNumber));
-//ja w swojej miałem jescze ++
-      //  user = new User();
-      //  questionNumber=0;
+        user = new User();
         return "test";
+
     }
 
 
@@ -61,6 +60,7 @@ public String continueTest(
         modelMap.put("message","Koniec gry! Twoja liczba punktów to: "
                 +user.getNumberOfPoints());
     }
+
     return "test";
 }
 
