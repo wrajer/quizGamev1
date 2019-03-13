@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringExampleData implements CommandLineRunner {//implementacja oznacza że bedzie an to ładowac przy starcie, to jest taki main
 
-    @Autowired
+    @Autowired // może być bez Autowired ale wtedy sami tworzymy obiekt i dodatkowo metody save itp
     private TestRepository testRepository;
 
     @Override
