@@ -16,13 +16,18 @@ public class Test {
         return id;
     }
 
+    public void addQuestion(Question question) {
+        question.setTest(this);
+        questionList.add(question);
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
 
     private String name;
 
-    @OneToMany(mappedBy ="test") //tu test bo jest to nawiązanie, nazwa klucza obcego po drugiej stronie
+    @OneToMany(mappedBy ="test", cascade = CascadeType.ALL) //tu test bo jest to nawiązanie, nazwa klucza obcego po drugiej stronie
     private List<Question> questionList = new ArrayList<>();
 
     public List<Question> getQuestionList() {
