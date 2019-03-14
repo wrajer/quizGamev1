@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Scope(value = "session")
 @Controller
-public class TestControllers {
+public class TestController {
 
 
     private User user = new User(); //dla zmiennych klasy jest rowne 0, nie
@@ -64,6 +64,20 @@ public String continueTest(
     return "test";
 }
 
+// kontrolery stronę główną, mozna dodac funkcjonalność automatyczną dodawanie linków do nowych test z for Each
+
+
+    @GetMapping("/y")
+    public String index(ModelMap modelMap) {
+
+     //dopisać metodę automatycznego generowania
+
+        return "index";
+
+    }
+
+
+    //
 
 }
 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+Form to add new question, once finish choose right option
+
+<form action="/addtesttest"  method="get">
+
+    <table>
+        <tr>
+            <td>Test name:</td>
+            <td><input type="text" name="name" th:value="${name}"   th:disabled="${disabled}"/></td>
+
+        </tr>
+        <tr>
+            <td>Question: <span th:text="${questionnumber}"></span></td>
+            <td><input type="text" name="content"/></td>
+        </tr>
+
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <select name="correct">
+                    <option value=1>TAK</option>
+                    <option value="0">NIE</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <select name="optionSaveClose">
+                    <option value=0>Add Question</option>
+                    <option value=1>Add Q and Save Test</option>
+                </select>
+            </td>
+            <td>
+                <button type="submit">Submit</button>
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+
+
+
+
+
+
+</body>
+</html>
