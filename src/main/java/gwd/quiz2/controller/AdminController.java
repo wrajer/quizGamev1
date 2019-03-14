@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Scope(value = "session")
 @Controller
@@ -27,6 +28,8 @@ public class AdminController {
     // ---------------------------------
     @GetMapping("/addtest")
     public String addtest(ModelMap modelMap) {
+        test = new Test();
+        questionNumber = 1;
         modelMap.put("questionnumber", questionNumber);
         return "addtest";
     }
@@ -52,14 +55,15 @@ public class AdminController {
 
         if (optionSaveClose) {
             testRepository.save(test); //przekazanie do bazy danych poczatkowych
-            return "index";
+            modelMap.put("tests", testRepository.findAll());
+            return "alltests";
         }
 
         return "addtest";
     }
 
 
-    // ---------------------------------
+    // --------------------------------- wyswietlanie listy testów
     @GetMapping("/alltests")
     public String alltests(ModelMap modelMap) {
 
@@ -68,8 +72,21 @@ public class AdminController {
         return "alltests";
     }
 
-    // ---------------------------------
+    // --------------------------------- usuwanie elementów
 
 
+    @GetMapping("tests/{id}/delete")
+    public String delete(@PathVariable Integer id, ModelMap modelMap) {
+
+        Test test = testRepository.findById(id).get();
+        modelMap.put("message", ("Usunieto test " + test.getName() + " z bazy danych"));
+        testRepository.deleteById(id);
+        modelMap.put("tests", testRepository.findAll());
+
+        return "alltests";
+    }
 }
 
+//5)Dodać admina,jakieś przykładowe hasło i login.
+//6)Zapisywanie danych użytkownika email i nazwa do bazy danych oraz wyników poszczególnych użytkowników(same wyniki).
+//7)Dodać możliwość wyświetlania poszczególnych odpowiedzi użytkowników.

@@ -34,8 +34,6 @@
             <th>Name</th>
             <th>Age</th>
             <th>Delete</th>
-            <th>Update</th>
-
         </tr>
         </thead>
         <tbody>
@@ -43,18 +41,10 @@
             <td th:text="${test.id}"></td>
             <td><a th:href="@{|/tests/${test.id}/play|}" th:text="${test.name}"> </a></td>
             <td th:text="${#lists.size(test.questionList)}"></td>
-            <!--<td>-->
-            <!--<a th:href="@{|/people/${person.id}/delete|}">-->
-            <!--Delete</a>-->
-
-            <!--</td>-->
-            <!--<td>-->
-            <!--<a th:href="@{|/people/${person.id}/update|}">-->
-            <!--Update</a>-->
-            <!--</td>-->
+            <td>
+                <a th:href="@{|/tests/${test.id}/delete|}">
+                    Delete</a>
         </tr>
-
-
         </tbody>
     </table>
 
